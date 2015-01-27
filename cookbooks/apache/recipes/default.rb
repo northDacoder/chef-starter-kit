@@ -18,6 +18,7 @@ service "httpd" do
 	action [:enable, :start]
 end
 
+node.default["apache"]["indexfile"] = "index2.html"
 
 # defined the file resource to create a cookbook_file from the 'index.html' source
 cookbook_file "/var/www/html/index.html" do
