@@ -21,9 +21,10 @@ end
 
 # defined the file resource to create a cookbook_file from the 'index.html' source
 cookbook_file "/var/www/html/index.html" do
-	source "index.html"
-	mode 0644
+	source node["apache"]["indexfile"]
+	mode "0644"
 end 
+
 
 
 
