@@ -13,14 +13,7 @@ package "httpd" do
 end
 
 
-# defined the service resource to enable & start the apache service 
-service "httpd" do
-	action [ :enable, :start ]
-end
-
-
-execute "mv /etc/httpd/conf.d/welcome.conf
-/etc/httpd/conf.d/welcome.conf.disabled" do 
+execute "mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.disabled" do 
 	only_if do 
 		File.exist?("/etc/httpd/conf.d/welcome.conf")
 	end
@@ -51,6 +44,12 @@ node["apache"]["sites"].each do |site_name, site_data|
 	
 end
 	
+
+# defined the service resource to enable & start the apache service 
+service "httpd" do
+	action [ :enable, :start ]
+end
+
 	
 
 
